@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jstree basic demos</title>
+	<style>
+	html { margin:0; padding:0; font-size:62.5%; }
+	body { max-width:800px; min-width:300px; margin:0 auto; padding:20px 10px; font-size:14px; font-size:1.4em; }
+	h1 { font-size:1.8em; }
+	.demo { overflow:auto; border:1px solid silver; min-height:100px; }
+	</style>
+	<link rel="stylesheet" href="./../../dist/themes/default/style.min.css" />
+</head>
+<body>
+  <h1>Role Selection Prototype</h1>
+  <div id="data" class="demo"></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./../../dist/jstree.min.js"></script>
+
+  <script>
+    $('#data').jstree({
+        'core' : {
+            'data' : [
+              { "text" : "Bogus Service", "children": [
+                { "text" : "Bogus Global Admin: bogus_global_admin"},
+                { "text" : "Bogus Bucket Admin: bogus_bucket_admin[*]", "children": [
+                  { "text" : "Bucket1: bogus_bucket_admin[Bucket1]"},
+                  { "text" : "Bucket2: bogus_bucket_admin[Bucket2]"}
+                ]},
+                { "text" : "Bogus Data Reader: bogus_data_reader[*]", "children": [
+                  { "text" : "Bucket1: bogus_data_reader[Bucket1]", "children": [
+                    { "text" : "_default: bogus_data_reader[Bucket1:_default]", "children": [
+                      { "text" : "_default: bogus_data_reader[Bucket1:_default:_default]"}
+                    ]},
+                    { "text" : "Scope1: bogus_data_reader[Bucket1:Scope1]", "children": [
+                      { "text" : "Collection1: bogus_data_reader[Bucket1:Scope1:Collection1]"},
+                      { "text" : "Collection2: bogus_data_reader[Bucket1:Scope1:Collection2]"}
+                    ]},
+                    { "text" : "Scope2: bogus_data_reader[Bucket1:Scope2]", "children": [
+                      { "text" : "Collection3: bogus_data_reader[Bucket1:Scope2:Collection3]"},
+                      { "text" : "Collection4: bogus_data_reader[Bucket1:Scope2:Collection4]"}
+                    ]},
+                  ]},
+                  { "text" : "Bucket2: bogus_data_reader[Bucket2]", "children": [
+                    { "text" : "_default: bogus_data_reader[Bucket2:_default]", "children": [
+                      { "text" : "_default: bogus_data_reader[Bucket2:_default:_default]"}
+                    ]}
+                  ]}
+                ]},
+              ]}
+            ]},
+        "plugins" : [ "checkbox" ]
+    });
+  </script>
+</body>
+</html>
